@@ -44,7 +44,6 @@ if __name__ == '__main__':
 
     # the result is:
     """
-        /usr/local/bin/python3.7 /Users/gwendolynhai/AI/Gwendolyn_s_Art/multi_process/subprocess_test.py
         INFO:root:$ nslookup www.python.org
         Server:		10.1.30.51
         Address:	10.1.30.51#53
