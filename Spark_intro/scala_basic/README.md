@@ -18,18 +18,19 @@ Scala is a beautiful, expressive programming language, with a clean,
  It’s used for server-side applications (including microservices), big data applications, and can also be used in the browser with Scala.js
 ~~~~
 
-above from https://github.com/apache/spark
+follow from https://github.com/apache/spark
 
-`
-spark-shell
-    Using Scala version 2.12.15 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_241)
+
+
+```spark-shell
+``    Using Scala version 2.12.15 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_241)
     Type in expressions to have them evaluated.
     Type :help for more information.
     
     scala> 
 
-   scala> spark.range(1000 * 1000 * 1000).count()
-   res0: Long = 1000000000                                                         
+`   scala> spark.range(1000 * 1000 * 1000).count()
+`   res0: Long = 1000000000                                                         
    
    scala> 
 
@@ -42,5 +43,5 @@ spark-shell
     >>> spark.range(1000 * 1000 * 1000).count()
     1000000000
     >>> 
-` 
+`
 end 
