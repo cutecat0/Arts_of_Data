@@ -1,6 +1,6 @@
 Recording learning process<br>
 includes: <br>
-**Hadoop**
-**A3C**
-**PyTorch**
+**Hadoop**<br>
+**A3C**<br>
+**PyTorch**<br>
 
