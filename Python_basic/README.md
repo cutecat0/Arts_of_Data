@@ -29,8 +29,8 @@ While the main process collapse, all the subprocesses must die... <br>
 But this the possibility ofn this situation is very rare, cause the main job of the main process(Master) is just, only distribute tasks
 while the job of other subprocesses(Worker) are executing tasks<br>
 
-The following comes from : https://www.liaoxuefeng.com/wiki/1016959663602400/1017631469467456
-_****多进程模式的缺点是创建进程的代价大，在Unix/Linux系统下，用fork调用还行，在Windows下创建进程开销巨大。<br>
+The following comes from : https://www.liaoxuefeng.com/wiki/1016959663602400/1017631469467456<br>
+多进程模式的缺点是创建进程的代价大，在Unix/Linux系统下，用fork调用还行，在Windows下创建进程开销巨大。<br>
 另外，操作系统能同时运行的进程数也是有限的，在内存和CPU的限制下，如果有几千个进程同时运行，操作系统连调度都会成问题。<br>
 
 多线程模式通常比多进程快一点，但是也快不到哪去，而且，多线程模式致命的缺点就是任何一个线程挂掉都可能直接造成整个进程崩溃，因为所有线程共享进程的内存。<br>
