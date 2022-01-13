@@ -283,7 +283,7 @@ def render_episode(env: gym.Env, model: tf.keras.Model, max_steps: int):
 
 # Save GIF image
 images = render_episode(env, model, max_steps_per_episode)
-image_file = 'cartpole-v0.gif'
+image_file = 'cartpole-v0_0.gif'
 # loop=0: loop forever, duration=1: play each frame for 1ms
 images[0].save(
     image_file, save_all=True, append_images=images[1:], loop=0, duration=1)
