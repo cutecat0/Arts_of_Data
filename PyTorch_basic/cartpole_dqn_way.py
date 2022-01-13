@@ -14,7 +14,6 @@ import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
 
-
 env = gym.make('CartPole-v0').unwrapped
 
 # set up matplotlib
@@ -64,8 +63,9 @@ class DQN(nn.Module):
         self.bn3 = nn.BatchNorm2d(32)
 
         # 线性输入连接的数量取决于conv2d层的输出，因此取决于输入图像的大小，因此请对其进行计算。
-        def conv2d_size_out(size, kernel_size = 5, stride = 2):
-            return (size - (kernel_size - 1) - 1) // stride  + 1
+        def conv2d_size_out(size, kernel_size=5, stride=2):
+            return (size - (kernel_size - 1) - 1) // stride + 1
+
         convw = conv2d_size_out(conv2d_size_out(conv2d_size_out(w)))
         convh = conv2d_size_out(conv2d_size_out(conv2d_size_out(h)))
         linear_input_size = convw * convh * 32
@@ -95,7 +95,7 @@ def get_screen():
     screen = env.render(mode='rgb_array').transpose((2, 0, 1))
     # cart位于下半部分，因此不包括屏幕的顶部和底部
     _, screen_height, screen_width = screen.shape
-    screen = screen[:, int(screen_height*0.4):int(screen_height * 0.8)]
+    screen = screen[:, int(screen_height * 0.4):int(screen_height * 0.8)]
     view_width = int(screen_width * 0.6)
     cart_location = get_cart_location(screen_width)
     if cart_location < view_width // 2:
@@ -122,7 +122,6 @@ plt.imshow(get_screen().cpu().squeeze(0).permute(1, 2, 0).numpy(),
 plt.title('Example extracted screen')
 plt.show()
 
-
 BATCH_SIZE = 128
 GAMMA = 0.999
 EPS_START = 0.9
@@ -146,7 +145,6 @@ target_net.eval()
 
 optimizer = optim.RMSprop(policy_net.parameters())
 memory = ReplayMemory(10000)
-
 
 steps_done = 0
 
