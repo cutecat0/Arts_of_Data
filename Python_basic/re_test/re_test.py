@@ -4,7 +4,6 @@
 import logging
 import re
 
-
 logging.getLogger().setLevel(logging.INFO)
 
 
@@ -18,3 +17,5 @@ def re_test(s):
 if __name__ == '__main__':
     s = 'I am a cute cat'
     re_test(s)
+
+    # reference : https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664
