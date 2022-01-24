@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from collections import namedtuple, deque, defaultdict, OrderedDict
+from collections import namedtuple, deque, defaultdict, OrderedDict, ChainMap
 import logging
+import os, argparse
 
 logging.getLogger().setLevel(logging.INFO)
 PI = 3.14
@@ -93,6 +94,21 @@ class FirstInFirstOutDict(OrderedDict):
             logging.info(f'add: {(key, value)}')
 
         OrderedDict.__setitem__(self, key, value)
+
+
+def chainmap_test():
+    """
+    ChainMap can connect a group of dict make it be a logically dict
+    ChainMap itself is a dict, but while searching, it can search in inner dict in ordered order
+    :return:
+    """
+    defaults = {
+        'animal': 'cat',
+        'user': 'Simba'
+    }
+
+    # command line parameters
+    parser = argparse.ArgumentParser()
 
 
 if __name__ == '__main__':
