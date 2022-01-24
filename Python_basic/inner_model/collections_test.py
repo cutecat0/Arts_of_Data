@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from collections import namedtuple, deque, defaultdict, OrderedDict, ChainMap
+from collections import namedtuple, deque, defaultdict, OrderedDict, ChainMap, Counter
 import logging
 import os, argparse
 
@@ -109,6 +109,28 @@ def chainmap_test():
 
     # command line parameters
     parser = argparse.ArgumentParser()
+    parser.add_argument('-a', '--animal')
+    parser.add_argument('-u', '--user')
+
+    namespace = parser.parse_args()
+    command_line_args = {k: v for k, v in vars(namespace).items() if v}
+
+    combined = ChainMap(command_line_args, os.environ, defaults)
+
+    logging.info(f'animal={combined["animal"]}')
+    logging.info(f'user={combined["user"]}')
+
+
+def counter_test():
+    c = Counter()
+    for cha in 'Learning':
+        c[cha] += 1
+
+    logging.info(f'c is: {c}')
+
+    c.update('Hey')
+
+    logging.info(f'after update c is: {c}')
 
 
 if __name__ == '__main__':
@@ -134,4 +156,37 @@ if __name__ == '__main__':
 
     # ordereddict_test()
 
-    fifo = FirstInFirstOutDict(6)
+    # fifo = FirstInFirstOutDict(6)
+
+    # chainmap_test()
+    """
+    INFO:root:animal=cat
+    INFO:root:user=Simba
+    
+    Process finished with exit code 0
+    
+    python3 collections_test.py 
+    INFO:root:animal=cat
+    INFO:root:user=Simba
+    
+    python3 collections_test.py -u cute
+    INFO:root:animal=cat
+    INFO:root:user=cute
+    
+    animal=dog user=Jerry python3 collections_test.py -u Tom
+    INFO:root:animal=dog
+    INFO:root:user=Tom
+
+    """
+
+    counter_test()
+    """
+    INFO:root:c is: Counter({'n': 2, 'L': 1, 'e': 1, 'a': 1, 'r': 1, 'i': 1, 'g': 1})
+    INFO:root:after update c is: Counter({'e': 2, 'n': 2, 'L': 1, 'a': 1, 'r': 1, 'i': 1, 'g': 1, 'H': 1, 'y': 1})
+
+    Process finished with exit code 0
+
+    """
+
+    pass
+
