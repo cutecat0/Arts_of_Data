@@ -88,6 +88,36 @@ def itertools_test():
     # INFO:root:use group by ignore upper: Z	['Z', 'Z', 'z', 'z']
 
 
+def pi(N):
+    """
+    'calculate PI sum N '
+    # step 1: create one odd list: 1, 3, 5, 7, 9, ...
+    # step 2: take N from step 1 list: 1, 3, 5, 7, 9, ..., 2*N-1.
+    # step 3: add + - & use 4 /: 4/1, -4/3, 4/5, -4/7, 4/9, ...
+    # step 4: sum :
+    return 3.14
+    :param N:
+    :return:
+    """
+    # way 1
+    result = 0
+    for idx, number in enumerate(itertools.takewhile(lambda x: x <= 2*N-1, itertools.count(1, 2))):
+        result += (-1)**idx * 4 / number
+
+    return result
+
+
 if __name__ == '__main__':
 
-    itertools_test()
+    # itertools_test()
+
+    # test
+    print(pi(10))
+    print(pi(100))
+    print(pi(1000))
+    print(pi(10000))
+    assert 3.04 < pi(10) < 3.05
+    assert 3.13 < pi(100) < 3.14
+    assert 3.140 < pi(1000) < 3.141
+    assert 3.1414 < pi(10000) < 3.1415
+    print('ok')
