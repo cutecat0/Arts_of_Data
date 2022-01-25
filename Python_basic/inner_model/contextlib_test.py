@@ -18,9 +18,5 @@ def contextlib_test():
 
 if __name__ == '__main__':
 
-<<<<<<< HEAD
     contextlib_test()
     pass
-=======
-    contextlib_test()
->>>>>>> 1371330010b4dbf04d3387c60bf65ea1ff068543
