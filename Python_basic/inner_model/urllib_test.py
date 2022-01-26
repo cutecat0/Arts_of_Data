@@ -40,6 +40,28 @@ def post_test():
     logging.info('Login to weibo.cn...')
 
     email = input('Email: ')
+    pwd = input('Password: ')
+    login_data = parse.urlencode([
+        ('username', email),
+        ('password', pwd),
+        ('entry', 'mweibo'),
+        ('client_id', ''),
+        ('savestate', '1'),
+        ('ec', ''),
+        ('pagerefer', 'https://passport.weibo.cn/signin/welcome?entry=mweibo&r=http%3A%2F%2Fm.weibo.cn%2F')
+    ])
+
+    req = request.Request('https://passport.weibo.cn/sso/login')
+    req.add_header('Origin', 'https://passport.weibo.cn')
+    req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
+    req.add_header('Referer', 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F')
+
+    with request.urlopen(req, data=login_data.encode('utf-8')) as f:
+        logging.info(f'Status: {f.status}, {f.reason}')
+        for k, v in f.getheaders():
+            logging.info(f'{k}:{v}')
+
+        logging.info(f'Data: {f.read().decode("utf-8")}')
 
 
 if __name__ == '__main__':
@@ -76,6 +98,30 @@ if __name__ == '__main__':
     long text 
     """
 
-    url = 'https://www.python.org/'
-    get_test(url)
+    # url = 'https://www.python.org/'
+    # get_test(url)
+
+    post_test()
+    """
+    INFO:root:Login to weibo.cn...
+    Email: xxx@xxx.com
+    Password: xxxxxxx
+    INFO:root:Status: 200, OK
+    INFO:root:Server:nginx/1.6.1
+    INFO:root:Date:Wed, 26 Jan 2022 12:42:56 GMT
+    INFO:root:Content-Type:text/html
+    INFO:root:Transfer-Encoding:chunked
+    INFO:root:Connection:close
+    INFO:root:Vary:Accept-Encoding
+    INFO:root:Cache-Control:no-cache, must-revalidate
+    INFO:root:Expires:Sat, 26 Jul 1997 05:00:00 GMT
+    INFO:root:Pragma:no-cache
+    INFO:root:Access-Control-Allow-Origin:https://passport.weibo.cn
+    INFO:root:Access-Control-Allow-Credentials:true
+    INFO:root:DPOOL_HEADER:tc-pub-10-85-144-115
+    INFO:root:Data: {"retcode":50011002,"msg":"\u7528\u6237\u540d\u6216\u5bc6\u7801\u9519\u8bef","data":{"username":"xxx@xxx.com","errline":15}}
+    
+    Process finished with exit code 0
+
+    """
 
