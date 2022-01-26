@@ -2,7 +2,8 @@
 # -*- coding:utf-8 -*-
 
 import logging
-from contextlib import contextmanager
+from contextlib import contextmanager, closing
+from urllib.request import urlopen
 
 
 logging.getLogger().setLevel(logging.INFO)
@@ -60,6 +61,27 @@ def create_query(name):
     logging.info('End')
 
 
+@contextmanager
+def tag(name):
+    """
+    a lot of time we hope some code can run pointed code before or after it run
+    by automatically, which can also use @contextmanager.
+    :param name:
+    :return:
+    """
+    logging.info(f'<{name}>')
+    yield
+    logging.info(f'<{name}>')
+
+
+@contextmanager
+def closing(thing):
+    try:
+        yield thing
+    finally:
+        thing.close()
+
+
 if __name__ == '__main__':
 
     # contextlib_test()
@@ -74,14 +96,27 @@ if __name__ == '__main__':
     #
     # Process finished with exit code 0
 
-    with create_query('Simba') as q:
-        q.query()
+    # with create_query('Simba') as q:
+    #     q.query()
 
     # INFO:root:Begin...
     # INFO:root:Query info about Simba
     # INFO:root:End
     #
     # Process finished with exit code 0
+
+    # with tag('H1'):
+    #     logging.info('Hey')
+    #     logging.info('My lovely cat.')
+
+    # INFO:root:<H1>
+    # INFO:root:Hey
+    # INFO:root:My lovely cat.
+    # INFO:root:<H1>
+
+    with closing(urlopen('https://www.python.org')) as page:
+        for line in page:
+            logging.info(f'{line}')
 
 
 
