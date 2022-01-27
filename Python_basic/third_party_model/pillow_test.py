@@ -16,7 +16,7 @@ def test():
     """
     # pip3 install pillow
 
-    img = Image.open('hogwarts-legacy-desktop.jpg')
+    img = Image.open('img/hogwarts-legacy-desktop.jpg')
 
     width, height = img.size
     logging.info(f'Image size is: {width}\t{height}')
