@@ -1,7 +1,7 @@
-声明：本文所学内容全部来自廖大神的教程
-all examples from this site:<br> https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064
-all examples from this site:<br> https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064
-all examples from this site:<br> https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064
+声明：本文所学内容全部来自廖大神的教程<br>
+all examples from this site:<br> https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064<br>
+all examples from this site:<br> https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064<br>
+all examples from this site:<br> https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064<br>
 
 under Unix/Linux, can use fork() call to use multiprocess
 
