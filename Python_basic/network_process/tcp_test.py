@@ -7,7 +7,7 @@ import socket
 logging.getLogger().setLevel(logging.INFO)
 
 
-def test():
+def client_test():
     """
     create a Socket based on TCP connection
     Socket是网络编程的一个抽象概念。
@@ -80,7 +80,7 @@ def test():
 
 if __name__ == '__main__':
 
-    test()
+    client_test()
     """
     INFO:root:header encoding: HTTP/1.1 302 Moved Temporarily
     Server: nginx
