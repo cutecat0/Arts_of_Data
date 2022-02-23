@@ -15,12 +15,13 @@ which is all m3u8 file.<br>
 2. If there's ABS, it helps seerver to make more effective bitrate.<br>
 3. Under worse network, it can be much useful to support the video can always display without stop(stuck too long).<br>
 
-<h3>Video Display Process</h3>
-1. Server collect bitrate video to slice machine
-2. Slice machine create index file for video and cut it into N numbers of ts file
-3. Passing above 2 files (index file & ts file) on http server
+`<h3>Video Display Process</h3>
+1. Server collect bitrate video to slice machine<br>
+2. Slice machine create index file for video and cut it into N numbers of ts file<br>
+3. Passing above 2 files (index file & ts file) on http server<br>
 4. Website or Client App searching for ts file on http server according to index file, then display N numbers
-of ts file, and that will be okay, which means, display done.
+of ts file, and that will be okay, which means, display done.<br>
    
 So, as we all know that, index file is so much important.<br>
-And, guess what! Here, the index file is M3U8 file!!!<br>
+And, guess what! Here, **the index file is M3U8 file!!!**<br>
+`
