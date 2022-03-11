@@ -32,3 +32,11 @@ And, guess what! Here, **the index file is M3U8 file!!!**<br>
 4. https://mp.weixin.qq.com/s/C1OfqDPkGkU6wrRNimCeGw<br>
 5. https://mp.weixin.qq.com/s/YGPSyHeipdmJ0trCQBBwVA<br>
 6. https://mp.weixin.qq.com/s/CoOf_SYMWIgb4gCyAFHy9g<br>
+
+<h1>What's video bitrate?</h1>
+> reference: https://restream.io/blog/what-is-video-bitrate/<br>
+>Video bitrate defines video data transferred at any given time.
+>Bitrate is measured in bits per second, which is referred to as “bps.”<br>
+>![img.png](img.png)<br>
+>to be updated....
+
