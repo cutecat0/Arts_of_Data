@@ -34,9 +34,16 @@ And, guess what! Here, **the index file is M3U8 file!!!**<br>
 6. https://mp.weixin.qq.com/s/CoOf_SYMWIgb4gCyAFHy9g<br>
 
 <h1>What's video bitrate?</h1>
-> reference: https://restream.io/blog/what-is-video-bitrate/<br>
->Video bitrate defines video data transferred at any given time.
->Bitrate is measured in bits per second, which is referred to as “bps.”<br>
->![img.png](img.png)<br>
->to be updated....
+reference: https://restream.io/blog/what-is-video-bitrate/<br>
+Video bitrate defines video data transferred at any given time.<br>
+Bitrate is measured in bits per second, which is referred to as “bps.”<br>
+![img.png](img.png)<br>
+to be updated....<br>
 
+https://filmora.wondershare.com/video-editing-tips/what-is-video-bitrate.html
+1. file size<br>
+2. codec<br>
+3. delivery cost<br>
+4. CBR / VBR:  constant bit rate  / variable bit rate <br>
+5. audio : same logic<br>
+6. calculate file size<br>
