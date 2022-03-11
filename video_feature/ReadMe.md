@@ -47,3 +47,6 @@ https://filmora.wondershare.com/video-editing-tips/what-is-video-bitrate.html
 4. CBR / VBR:  constant bit rate  / variable bit rate <br>
 5. audio : same logic<br>
 6. calculate file size<br>
+
+#TBD
+###The difference between video bitrate. bitrate streaming?
