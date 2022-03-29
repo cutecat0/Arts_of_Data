@@ -6,3 +6,8 @@ If you let people’s perception of you dicate your behavior, you will never gro
 "I'm worth it" is about owning your right to be you.
 To stand in your truth, with your body, your skin and your face.
 -by Kate Winslet
+
+#Reading records
+February: 《三体III》 <br>
+
+March：《社会心理学》
