@@ -2,8 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import logging
-import pandas as pd
-import random
+import numpy as np
 
 
 logging.getLogger().setLevel(logging.INFO)
@@ -30,11 +29,21 @@ class MovingAverage(object):
             ma_data.append(window_average)
             i += 1
 
-        logging.info(f'moving average is : \n {ma_data}')
+        logging.info(f'using normal way ma is : \n {ma_data}')
+
+    def numpy_ma(self):
+        ma_data, i = [], 0
+        while i < len(self._data) - self._moving_window_size + 1:
+            window_average = round(np.sum(self._data[i:i+self._moving_window_size]) / self._moving_window_size, 2)
+            ma_data.append(window_average)
+            i += 1
+
+        logging.info(f'using numpy ma is: \n {ma_data}')
 
 
 if __name__ == '__main__':
 
     ma = MovingAverage()
     ma.calculate_ma()
+    ma.numpy_ma()
     # y_predict = i_df[-NUM:].rolling(window=MOVING_WINDOW_SIZE).mean()
