@@ -13,3 +13,16 @@ https://community.fs.com/blog/tcpip-vs-osi-whats-the-difference-between-the-two-
 OSI model is a conceptual model that characterizes and standardizes how different software and hardware components involved in a network communication should divide labor and interact with one another. It has seven layers.
 ￼![image](https://user-images.githubusercontent.com/37787934/148500245-acc434ad-8edc-4f93-b35d-06d8b0f52610.png)
 
+
+
+# Response Status Codes
+reference: https://httpwg.org/specs/rfc7231.html#status.204<br>
+####1xx(Information): The request was received， continuing process<br>
+####2xx(Successful): The request was successfully received, understood, and accepted<br>
+####3xx(Redirection): Further action needs to be taken in order to complete the request<br>
+####4xx(Client err): The request contains bad syntax or cannot be fulfilled<br>
+####5xx(Server err): The server failed to fulfill an apparently valid request <br>
+
+reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
+
+
