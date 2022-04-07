@@ -13,6 +13,11 @@ class CoroutineTest(object):
         协程，又称微线程，纤程。
         英文名Coroutine。
         https://www.liaoxuefeng.com/wiki/1016959663602400/1017968846697824
+        the whole process has no lock, excuted by only one thread
+        producer and consume worked together, cooperation, which is called Coroutine,
+        not the Threads with multi tasks in the way of "knock"
+            整个流程无锁，由一个线程执行，produce和consumer协作完成任务，所以称为“协程”，而非线程的抢占式多任务。
+            最后套用Donald Knuth的一句话总结协程的特点：“子程序就是协程的一种特例。”
         """
         self._name = name
 
@@ -26,7 +31,7 @@ class CoroutineTest(object):
             r = '200 ok'
 
     def produce(self, cons):
-        cons.send(None)
+        cons.send(None)  # start generator
         n = 0
         while n < 5:
             n += 1
@@ -59,5 +64,6 @@ if __name__ == '__main__':
     INFO:root:[PRODUCER] Consumer return 200 ok
     
     Process finished with exit code 0
+    
     """
 
