@@ -10,4 +10,21 @@ To stand in your truth, with your body, your skin and your face.
 #Reading records
 February: 《三体III》 <br>
 
-March：《社会心理学》
+March：<br>
+《社会心理学》<br>
+《极简力》——小野 <br>
+after read this book, everything is "so clearly"
+
+April:<br>
+《rethinking》<br>
+
+
+# plan
+May:<br>
+《My Talent Girlfriend》
+<br>
+June:<br>
+《The Warden Lake》<br>
+July:<br>
+《Lonely One Hundred Years》<br>
+
