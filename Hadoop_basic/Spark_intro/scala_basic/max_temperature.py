@@ -1,5 +1,7 @@
+import re
+import sys
+
 from pyspark import SparkContext
-import re, sys
 
 
 def max_temperature():
