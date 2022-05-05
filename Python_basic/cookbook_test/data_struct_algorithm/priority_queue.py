@@ -37,7 +37,7 @@ if __name__ == '__main__':
     q.push(Item('Rabbit'), 8)
     q.push(Item('Dog'), 10)
     q.push(Item('Food'), 1)
-
+    # O(log N)，
     print(q)
     print(q.pop())
     print(q.pop())
