@@ -34,9 +34,34 @@ def dict_key_to_values():
     d['a'].add(3)
     print(d)
 
+    d = {}
+    d.setdefault('a', []).append(1)
+    d.setdefault('a', []).append(3)
+    d.setdefault('b', []).append(2)
+    print(d)
+
+    pairs = {
+        'a': 1,
+        'b': 2
+    }
+
+    d = {}
+    for key, value in pairs:
+        if key not in d:
+            d[key] = []
+        d[key].append(value)
+    print(d)
+
+    d = defaultdict(list)
+    for key, value in pairs:
+        d[key].append(value)
+    print(d)
+
 
 if __name__ == '__main__':
 
     dict_key_to_values()
     # defaultdict(<class 'list'>, {'a': [1, 3, 3], 'b': [2]})
     # defaultdict(<class 'set'>, {'a': {1, 3}, 'b': {2}})
+    # {'a': [1, 3], 'b': [2]}
+
