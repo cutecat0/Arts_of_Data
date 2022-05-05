@@ -18,6 +18,11 @@ def do_heapq():
 
 
 def use_heapq():
+    """
+    When N is not nearly to the list, use heapq.nlargest() or heapq.nsmallest
+    When N is nearly to the list, use sorted(list)[:N] or sorted(list)[-N:]
+    When N equals to 1, just use max() and min()
+    """
     tools = [
         {'App': 'Agenda',  'use_time': 2.5, 'like': 7.8},
         {'App': 'WeChat',  'use_time': 0.1, 'like': 8.8},
