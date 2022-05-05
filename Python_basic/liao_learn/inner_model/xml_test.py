@@ -37,7 +37,7 @@ def create_xml():
     L = []
     L.append(r'<?xml version="1.0"?>')
     L.append(r'<root>')
-    L.append(encode('some & data'))
+    L.append(encode('some & data_science'))
     L.append(r'</root>')
 
     return ''.join(L)

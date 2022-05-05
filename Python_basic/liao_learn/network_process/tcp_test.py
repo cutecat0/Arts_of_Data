@@ -41,7 +41,7 @@ def client_test():
     端口号小于1024的是Internet标准服务的端口，端口号大于1024的，可以任意使用。
     """
 
-    # send data
+    # send data_science
     s.send(b'GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n')
     """
     TCP连接创建的是双向通道，双方都可以同时给对方发数据。
@@ -49,7 +49,7 @@ def client_test():
     例如，HTTP协议规定客户端必须先发请求给服务器，服务器收到后才发数据给客户端。
     """
 
-    # receive data
+    # receive data_science
     buffer = []
     while True:
         # each time receive 1k Bytes most
@@ -73,7 +73,7 @@ def client_test():
     header, html = data.split(b'\r\n\r\n', 1)
     logging.info(f'header encoding: {header.decode("utf-8")}')
 
-    # write recive data into file
+    # write recive data_science into file
     with open('sina.html', 'wb') as f:
         f.write(html)
 

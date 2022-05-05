@@ -19,9 +19,9 @@ def hashlib_test():
     """
     Digest : MD5, SHA1
     摘要算法： also called 哈希算法、散列算法
-    through a function change any length data into a length fixed data circle (数据串)
+    through a function change any length data_science into a length fixed data_science circle (数据串)
     digest function is a singel direction function
-    it's easy to calculate f(data) while hard to through digest push out data
+    it's easy to calculate f(data_science) while hard to through digest push out data_science
     MD5 is the most 'viewed' digest algorithm, high speed, result is fixed 128 bit,
     normally expressed by using one 32bits 16hex string
     the result of SHA1 is 160bit, usually  expressed by using one 40bits 16hex string

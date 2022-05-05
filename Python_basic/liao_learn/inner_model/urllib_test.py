@@ -35,7 +35,7 @@ def get_test(url):
 
 def post_test():
     """
-    if use POST send a request, just need to input parameter 'data'
+    if use POST send a request, just need to input parameter 'data_science'
     as bytes style
     :return:
     """
@@ -142,7 +142,7 @@ if __name__ == '__main__':
     # INFO:root:Access-Control-Allow-Origin:https://passport.weibo.cn
     # INFO:root:Access-Control-Allow-Credentials:true
     # INFO:root:DPOOL_HEADER:tc-pub-10-85-144-115
-    # INFO:root:Data: {"retcode":50011002,"msg":"\u7528\u6237\u540d\u6216\u5bc6\u7801\u9519\u8bef","data":{"username":"xxx@xxx.com","errline":15}}
+    # INFO:root:Data: {"retcode":50011002,"msg":"\u7528\u6237\u540d\u6216\u5bc6\u7801\u9519\u8bef","data_science":{"username":"xxx@xxx.com","errline":15}}
     #
     # Process finished with exit code 0
     #

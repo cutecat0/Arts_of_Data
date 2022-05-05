@@ -11,7 +11,7 @@ local_animal = threading.local()
 
 def readme():
     """
-    Under multi processing environment, each thread owns its own data
+    Under multi processing environment, each thread owns its own data_science
     One thread use its local value is better than use global value,
     because local value can be seen only by thread itself, which can
     not "trouble' other threads

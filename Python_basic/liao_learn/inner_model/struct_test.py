@@ -23,14 +23,14 @@ bmp_data = base64.b64decode('Qk1oAgAAAAAAADYAAAAoAAAAHAAAAAoAAAABABAAAAAAADICAAA
 
 def struct_test():
     """
-    struct model solve bytes and other 01 data type change
+    struct model solve bytes and other 01 data_science type change
     :return:
     """
     bytes_data = struct.pack('>I', 10240099)
-    logging.info(f'pack change any type data into bytes: {bytes_data}')
+    logging.info(f'pack change any type data_science into bytes: {bytes_data}')
 
     bytes2data = struct.unpack('>IH', b'\xf0\xf0\xf0\xf0\x80\x80')
-    logging.info(f'unpack change bytes to itself data type: {bytes2data}')
+    logging.info(f'unpack change bytes to itself data_science type: {bytes2data}')
 
     s = b'\x42\x4d\x38\x8c\x0a\x00\x00\x00\x00\x00\x36\x00\x00\x00\x28\x00\x00\x00\x80\x02\x00\x00\x68\x01\x00\x00\x01\x00\x18\x00'
     bmp = struct.unpack('<ccIIIIIIHH', s)
@@ -50,7 +50,7 @@ def bmp_info(data):
     # INFO:root:s is: (b'B', b'M', 616, 0, 54, 40, 28, 10, 1, 16)
     b, m = s[0], s[1]
     if b == b'B' and m == b'M':
-        logging.info(f'data is BMP file {s}')
+        logging.info(f'data_science is BMP file {s}')
         width, height, color = s[-4], s[-3], s[-1]
         return {
             'width': width,
@@ -62,8 +62,8 @@ def bmp_info(data):
 if __name__ == '__main__':
 
     # struct_test()
-    # INFO:root:pack change any type data into bytes: b'\x00\x9c@c'
-    # INFO:root:unpack change bytes to itself data type: (4042322160, 32896)
+    # INFO:root:pack change any type data_science into bytes: b'\x00\x9c@c'
+    # INFO:root:unpack change bytes to itself data_science type: (4042322160, 32896)
     # INFO:root:windows BMP result: (b'B', b'M', 691256, 0, 54, 40, 640, 360, 1, 24)
 
     bi = bmp_info(bmp_data)
