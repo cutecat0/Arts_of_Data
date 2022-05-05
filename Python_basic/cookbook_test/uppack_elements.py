@@ -56,6 +56,38 @@ def drop_first_last(score):
     return np.average(middle)
 
 
+# star_express
+records = [
+    ('cat', 1, 2),
+    ('dog', 'wow'),
+    ('cat', 3, 4)
+]
+
+
+def cat_stuff(x, y):
+    print('cat', x, y)
+
+
+def dog_stuff(s):
+    print('dog', s)
+
+
+def star_express():
+    for tag, *args in records:
+        if tag == 'cat':
+            cat_stuff(*args)
+        elif tag == 'dog':
+            dog_stuff(*args)
+
+
+items = [i for i in range(10)]
+
+
+def sum_items(item):
+    head, *tail = item
+    return head + sum(tail) if tail else head
+
+
 if __name__ == '__main__':
     # unpackValue2obj()
 
@@ -63,4 +95,7 @@ if __name__ == '__main__':
     # avg = drop_first_last(score)
     # print(avg)
 
-    unpackIterableObj2Values()
+    # unpackIterableObj2Values()
+
+    # star_express()
+    print(sum_items(items))
