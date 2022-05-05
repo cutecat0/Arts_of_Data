@@ -50,7 +50,7 @@ def test_torch():
             [0, 0, 0]])
     """
 
-    #  create one tensor use data
+    #  create one tensor use data_science
     x = torch.tensor([5.5, 3])
     print(x)
     # output

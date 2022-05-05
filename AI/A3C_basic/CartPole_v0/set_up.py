@@ -75,7 +75,7 @@ def run_episode(
         initial_state: tf.Tensor,
         model: tf.keras.Model,
         max_steps: int) -> Tuple[tf.Tensor, tf.Tensor, tf.Tensor]:
-    """Runs a single episode to collect training data."""
+    """Runs a single episode to collect training data_science."""
 
     action_probs = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
     values = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
@@ -182,14 +182,14 @@ def train_step(
 
     with tf.GradientTape() as tape:
 
-        # Run the model for one episode to collect training data
+        # Run the model for one episode to collect training data_science
         action_probs, values, rewards = run_episode(
             initial_state, model, max_steps_per_episode)
 
         # Calculate expected returns
         returns = get_expected_return(rewards, gamma)
 
-        # Convert training data to appropriate TF tensor shapes
+        # Convert training data_science to appropriate TF tensor shapes
         action_probs, values, returns = [
             tf.expand_dims(x, 1) for x in [action_probs, values, returns]]
 
