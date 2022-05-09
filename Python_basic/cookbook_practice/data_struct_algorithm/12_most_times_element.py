@@ -35,19 +35,19 @@ def most_times_in_series():
 
     a = Counter(pets)
     print(a)
-    Counter({'cat': 3, 'Simba': 2, 'loves': 2, 'duck': 2, 'Cat': 2, 'so': 1, 'much': 1, 'rabbit': 1, 'say': 1, 'no': 1, 'Kitty': 1})
+    # Counter({'cat': 3, 'Simba': 2, 'loves': 2, 'duck': 2, 'Cat': 2, 'so': 1, 'much': 1, 'rabbit': 1, 'say': 1, 'no': 1, 'Kitty': 1})
 
     b = Counter(more_pets)
     print(b)
-    Counter({'Cat': 1, 'rabbit': 1, 'duck': 1, 'say': 1, 'no': 1})
+    # Counter({'Cat': 1, 'rabbit': 1, 'duck': 1, 'say': 1, 'no': 1})
 
     c = a + b
     print(c)
-    Counter({'cat': 3, 'duck': 3, 'Cat': 3, 'Simba': 2, 'loves': 2, 'rabbit': 2, 'say': 2, 'no': 2, 'so': 1, 'much': 1, 'Kitty': 1})
+    # Counter({'cat': 3, 'duck': 3, 'Cat': 3, 'Simba': 2, 'loves': 2, 'rabbit': 2, 'say': 2, 'no': 2, 'so': 1, 'much': 1, 'Kitty': 1})
 
     d = a - b
     print(d)
-    Counter({'cat': 3, 'Simba': 2, 'loves': 2, 'so': 1, 'much': 1, 'duck': 1, 'Kitty': 1, 'Cat': 1})
+    # Counter({'cat': 3, 'Simba': 2, 'loves': 2, 'so': 1, 'much': 1, 'duck': 1, 'Kitty': 1, 'Cat': 1})
 
 
 if __name__ == '__main__':
