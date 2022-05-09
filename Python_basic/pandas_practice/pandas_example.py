@@ -28,6 +28,15 @@ def pandas_practice():
     # 3    Duck     3.1      -1      88
     # 4  Rabbit     3.8      -1      98
 
+    df.loc[df.weight > 6, ['height', 'lovely']] = 666
+    # print(df)
+    #     name  weight  height  lovely
+    # 0     Cat     4.2      -1     100
+    # 1   Kitty     6.6     666     666
+    # 2     Dog    12.5     666     666
+    # 3    Duck     3.1      -1      88
+    # 4  Rabbit     3.8      -1      98
+
 
 if __name__ == '__main__':
 
