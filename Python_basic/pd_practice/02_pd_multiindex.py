@@ -46,6 +46,15 @@ def pd_slice():
 
     """
 
+    # level and axis are optional, and default to zero
+    # tdf = df.xs("BB", level=1, axis=0)  # It can't work here
+    # print(tdf)
+
+    tdf = df.xs('three', level=1, axis=0)
+    print(tdf)
+    #     mData
+    # BB     55
+
 
 if __name__ == '__main__':
 
