@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def line_dot_pic():
@@ -8,7 +9,11 @@ def line_dot_pic():
     year = [1800, 1850, 1900] + year
     pop = [1.0, 1.262, 1.650] + pop
 
-    plt.plot(year, pop)  # line plot
+    np_data = np.array([i for i in range(len(year))])
+    np_data *= 10
+
+    # plt.plot(year, pop)  # line plot
+    plt.scatter(year, pop, s=np_data)  # dot plot
 
     # customization
     plt.xlabel('Year')
@@ -19,10 +24,6 @@ def line_dot_pic():
     plt.yticks([i for i in range(14) if i % 2 == 0],
                [str(i) + 'B' for i in range(14) if i % 2 == 0])
 
-    plt.show()
-
-    plt.scatter(year, pop)  # dot plot
-    # plt.xscale('log')
     plt.show()
 
 
