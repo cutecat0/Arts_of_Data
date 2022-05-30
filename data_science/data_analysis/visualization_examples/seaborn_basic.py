@@ -70,10 +70,34 @@ def scatter_plot():
     fig.show()
 
 
+def box_plot():
+    tips = sns.load_dataset('tips')
+    labels = tips.sex.unique()
+    data_list = []
+    for i in labels:
+        data_list.append(tips[tips.sex == i].tip.to_list())
+
+    fig = plt.figure()
+    axes1 = fig.add_subplot(1, 1, 1)
+    # axes1.boxplot(
+    #     [tips[tips['sex'] == 'Female']['tip'],
+    #      tips[tips['sex'] == 'Male']['tip']],
+    #     labels=['Female', 'Male']
+    # )
+    axes1.boxplot(data_list, labels=labels, showmeans=True)
+    axes1.set_title('Box Plot of Tips by Sex')
+    axes1.set_xlabel('Sex')
+    axes1.set_ylabel('Tip')
+
+    fig.show()
+
+
 if __name__ == '__main__':
 
     # anscomde_example()
 
     # hist_plot()
 
-    scatter_plot()
+    # scatter_plot()
+
+    box_plot()
