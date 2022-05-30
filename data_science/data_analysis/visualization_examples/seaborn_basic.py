@@ -56,8 +56,24 @@ def hist_plot():
     fig.show()
 
 
+def scatter_plot():
+    tips = sns.load_dataset('tips')
+
+    fig = plt.figure()
+
+    axes1 = fig.add_subplot(1, 1, 1)
+    axes1.scatter(tips['total_bill'], tips['tip'])
+    axes1.set_title('Scatter plot of Total Bill cs Tip')
+    axes1.set_xlabel('Toal Bill')
+    axes1.set_ylabel('Tip')
+
+    fig.show()
+
+
 if __name__ == '__main__':
 
     # anscomde_example()
 
-    hist_plot()
+    # hist_plot()
+
+    scatter_plot()
