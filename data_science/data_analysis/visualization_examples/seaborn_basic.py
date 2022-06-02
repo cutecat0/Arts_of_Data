@@ -84,12 +84,57 @@ def box_plot():
     #      tips[tips['sex'] == 'Male']['tip']],
     #     labels=['Female', 'Male']
     # )
+    print(data_list)
     axes1.boxplot(data_list, labels=labels, showmeans=True)
     axes1.set_title('Box Plot of Tips by Sex')
     axes1.set_xlabel('Sex')
     axes1.set_ylabel('Tip')
 
     fig.show()
+
+
+# create a value with color based on sex
+def recode_sex(sex):
+    if sex == 'Female':
+        return 0
+    else:
+        return 1
+
+
+def colored_scatter_plot():
+    tips = sns.load_dataset('tips')
+    tips['sex_color'] = tips['sex'].apply(recode_sex)
+
+    fig = plt.figure()
+    axes1 = fig.add_subplot(1, 1, 1)
+    axes1.scatter(
+        x=tips['total_bill'],
+        y=tips['tip'],
+
+        # 根据聚餐人数设置点的大小，*10以放大不同
+        s=tips['size'] * 10,
+
+        # set color for sex
+        c=tips['sex_color'],
+
+        # 设置alpha值， 增加点的透明度，用于表现重叠的点
+        alpha=0.5
+    )
+    axes1.set_title('Total Bill vs Tip Colored by Sex & Sized by Size')
+    axes1.set_xlabel('Total Bill')
+    axes1.set_ylabel('Tip')
+    fig.show()
+
+
+def single_value_plot():
+    tips = sns.load_dataset('tips')
+
+    hist, ax = plt.subplots()
+    ax = sns.displot(tips['total_bill'], kde=True)  # while kde=True show line
+    ax = sns.displot(tips['total_bill'], kde=False)  # line here will not show
+
+    ax.set_titles('Total Bill Histgram with Density Plot')
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -100,4 +145,8 @@ if __name__ == '__main__':
 
     # scatter_plot()
 
-    box_plot()
+    # box_plot()
+
+    # colored_scatter_plot()
+
+    single_value_plot()
