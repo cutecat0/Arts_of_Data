@@ -137,6 +137,16 @@ def single_value_plot():
     plt.show()
 
 
+def density_plot():
+    tips = sns.load_dataset('tips')
+    den, ax = plt.subplots()
+    ax = sns.distplot(tips['total_bill'], hist=False)
+    ax.set_title('Total Bill Density')
+    ax.set_xlabel('Total Bill')
+    ax.set_ylabel('Unit Probability')
+    plt.show()
+
+
 if __name__ == '__main__':
 
     # anscomde_example()
@@ -149,4 +159,6 @@ if __name__ == '__main__':
 
     # colored_scatter_plot()
 
-    single_value_plot()
+    # single_value_plot()
+
+    density_plot()
