@@ -1,5 +1,10 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+
+tips = sns.load_dataset('tips')
 
 
 def anscomde_example():
@@ -141,10 +146,65 @@ def density_plot():
     tips = sns.load_dataset('tips')
     den, ax = plt.subplots()
     ax = sns.distplot(tips['total_bill'], hist=False)
+    ax = sns.kdeplot(tips['total_bill'])
     ax.set_title('Total Bill Density')
     ax.set_xlabel('Total Bill')
     ax.set_ylabel('Unit Probability')
     plt.show()
+
+
+def rug_plot():
+    tips = sns.load_dataset('tips')
+    hist_den_rug, ax = plt.subplots()
+    ax = sns.distplot(tips['total_bill'], rug=True)
+    ax.set_title('Total Bill Histogram with Density and Rug Plot')
+    ax.set_xlabel('Total Bill')
+    plt.show()
+
+
+def count_plot():
+    count, ax = plt.subplots()
+    ax = sns.countplot('day', data=tips)
+    ax.set_title('Count of Days')
+    ax.set_xlabel('Day of the Week')
+    ax.set_ylabel('Frequency')
+    plt.show()
+
+
+def sns_scatter_plot():
+    scatter, ax = plt.subplots()
+    ax = sns.regplot(
+        x='total_bill',
+        y='tip',
+        data=tips,
+        fit_reg=True,  # if ser fit_reg=False 拟合回归线将不显示
+        label='True Data'
+    )
+
+    lr = LinearRegression()
+    predicted = lr.fit(X=tips['total_bill'].values.reshape(-1, 1),
+                       y=tips['tip'].values)
+    Y_predict = lr.predict(tips.index.values.reshape(-1, 1))
+    pa, pb = predicted.coef_[0], predicted.intercept_
+
+    mse = mean_squared_error(tips['tip'].values.reshape(-1, 1), Y_predict)
+    plt.plot(tips.index.values, Y_predict, 'red', label='Liner Regression')
+
+    plt.xlim(0, 50)
+    plt.ylim(0, 10)
+
+    ax.set_title('ScatterPlot of Total Bill and Tip' + f'   y={pa:.2f}x + {pb:.2f} MSE={mse:.3f}')
+    ax.set_xlabel('Total Bill')
+    ax.set_ylabel('Tip')
+    plt.show()
+
+    # way2
+    # fig = sns.lmplot(
+    #     x='total_bill',
+    #     y='tip',
+    #     data=tips
+    # )
+    # plt.show()
 
 
 if __name__ == '__main__':
@@ -161,4 +221,8 @@ if __name__ == '__main__':
 
     # single_value_plot()
 
-    density_plot()
+    # density_plot()
+
+    # rug_plot()
+    # count_plot()
+    sns_scatter_plot()
