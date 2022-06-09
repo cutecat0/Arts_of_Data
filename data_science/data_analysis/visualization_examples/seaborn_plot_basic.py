@@ -3,8 +3,21 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
-
 tips = sns.load_dataset('tips')
+
+sns.set_style('whitegrid')
+
+fig = plt.figure()
+seaborn_styles = ['darkgrid', 'whitegrid', 'dark', 'white', 'ticks']
+for idx, style in enumerate(seaborn_styles):
+    plot_position = idx + 1
+    with sns.axes_style(style):
+        ax = fig.add_subplot(2, 3, plot_position)
+        violin = sns.violinplot(x='time', y='total_bill',
+                                data=tips, ax=ax)
+        violin.set_title(style)
+fig.tight_layout()
+plt.show()
 
 
 def anscomde_example():
