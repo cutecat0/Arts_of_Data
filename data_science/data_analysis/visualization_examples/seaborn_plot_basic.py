@@ -180,10 +180,6 @@ def sns_scatter_plot():
         fit_reg=True,  # if ser fit_reg=False 拟合回归线将不显示
         label='True Data'
     )
-    joint = sns.jointplot(x='total_bill', y='tip', data=tips)
-    joint.set_axis_labels(xlabel='Total Bill', ylabel='Tip')
-
-    joint.fig.suptitle('Joint Plot of Total Bill and Tip', fontsize=10, y=1.03)
 
     lr = LinearRegression()
     predicted = lr.fit(X=tips['total_bill'].values.reshape(-1, 1),
@@ -211,6 +207,159 @@ def sns_scatter_plot():
     # plt.show()
 
 
+def sns_joint_plot():
+    joint = sns.jointplot(x='total_bill', y='tip', data=tips)
+    joint.set_axis_labels(xlabel='Total Bill', ylabel='Tip')
+
+    joint.fig.suptitle('Joint Plot of Total Bill and Tip', fontsize=10, y=1.03)
+    plt.show()
+
+
+def sns_beehive_plot():
+    hexbin = sns.jointplot(x='total_bill', y='tip', data=tips, kind='hex')
+    hexbin.set_axis_labels(xlabel='Total Bill', ylabel='Tip')
+    hexbin.fig.suptitle('Hexbin Joint Plot of Total Bill and Tip', fontsize=10, y=1.03)
+    plt.show()
+
+
+def _2D_kde_plot():
+    kde, ax = plt.subplots()
+    ax = sns.kdeplot(data=tips['total_bill'], data2=tips['tip'],
+                     shade=True)
+    ax.set_title('Kernel Density Plot of Total Bill and Tip')
+    ax.set_xlabel('Total Bill')
+    ax.set_ylabel('Tip')
+    plt.show()
+
+    kde_joint = sns.jointplot(x='total_bill', y='tip', data=tips, kind='kde')
+    plt.show()
+
+
+def bar_plot():
+    bar, ax = plt.subplots()
+    ax = sns.barplot(x='time', y='total_bill', data=tips)
+    ax.set_title('Bar plot of average total bill for time of day')
+    ax.set_xlabel('Time of day')
+    ax.set_ylabel('Average total bill')
+    plt.show()
+
+
+def box_plot():
+    """
+    min、第一个四分位数、中位数、第三个四分位数、max、（若有）基于四分位差的离散值
+    """
+    box, ax = plt.subplots()
+    ax = sns.boxplot(x='time', y='total_bill', data=tips)
+    ax.set_title('Box plot of total bill by time of day')
+    ax.set_xlabel('Time of day')
+    ax.set_ylabel('Total bill')
+    plt.show()
+
+
+def violin_plot():
+    violin, ax = plt.subplots()
+    ax = sns.violinplot(x='time', y='total_bill', data=tips)
+    ax.set_title('Violin plot of total bill by time of day')
+    ax.set_xlabel('Time of day')
+    ax.set_ylabel('Total bill')
+    plt.show()
+
+
+def violin_color_plot():
+    violin, ax = plt.subplots()
+    ax = sns.violinplot(x='time', y='total_bill', hue='sex', data=tips, split=True)
+    plt.show()
+
+
+def pair_plot():
+    fig = sns.pairplot(tips)
+    plt.show()
+
+
+def color_pair_plot():
+    fig = sns.pairplot(tips, hue='sex')
+    plt.show()
+
+
+def pair_grid_plot():
+    pair_grid = sns.PairGrid(tips)
+    pair_grid = pair_grid.map_upper(sns.regplot)  # plt.scatter
+    pair_grid = pair_grid.map_lower(sns.kdeplot)
+    pair_grid = pair_grid.map_diag(sns.distplot, rug=True)
+    plt.show()
+
+
+def color_lmplot():
+    scatter = sns.lmplot(x='total_bill', y='tip', data=tips,
+                         fit_reg=False,
+                         hue='sex',
+                         # scatter_kws={'s': tips['size']*10}  # can't work here
+                         )
+    plt.show()
+
+
+def color_lmplot_2():
+    scatter = sns.lmplot(x='total_bill', y='tip', data=tips,
+                         hue='sex', fit_reg=False)
+    plt.show()
+
+
+def color_lmplot_markers():
+    scatter = sns.lmplot(x='total_bill', y='tip', data=tips,
+                         fit_reg=False,
+                         hue='sex',
+                         markers=['o', 'x'],
+                         # scatter_kws={'s': tips['size']*10}
+                         )
+    plt.show()
+
+
+def anscombe_plot():
+    anscombe = sns.load_dataset('anscombe')
+
+    anscombe_plot = sns.lmplot(x='x', y='y', data=anscombe,
+                               fit_reg=False,
+                               col='dataset',
+                               col_wrap=2
+                               )
+    plt.show()
+
+
+def facet_grid_plot():
+    facet = sns.FacetGrid(tips, col='time')
+    facet.map(sns.distplot, 'total_bill', rug=True)
+    plt.show()
+
+
+def facet_grid_plot_v2():
+    facet = sns.FacetGrid(tips, col='day', hue='sex')
+    facet = facet.map(plt.scatter, 'total_bill', 'tip')
+    facet = facet.add_legend()
+    plt.show()
+
+
+def lmplot_v3():
+    fig = sns.lmplot(x='total_bill', y='tip', data=tips, fit_reg=False,
+                     hue='sex', col='day',
+                     # col_wrap=2
+                     )
+    plt.show()
+
+
+def facet_grid_plot_v3():
+    facet = sns.FacetGrid(tips, col='time', row='smoker', hue='sex')
+    facet = facet.map(plt.scatter, 'total_bill', 'tip')
+    plt.show()
+
+
+def facet_plot():
+    facet = sns.factorplot(x='day', y='total_bill',
+                           hue='sex', data=tips,
+                           row='smoker', col='time',
+                           kind='violin')
+    plt.show()
+
+
 if __name__ == '__main__':
 
     # anscomde_example()
@@ -229,4 +378,24 @@ if __name__ == '__main__':
 
     # rug_plot()
     # count_plot()
-    sns_scatter_plot()
+    # sns_scatter_plot()
+    # sns_joint_plot()
+    # sns_beehive_plot()
+    # _2D_kde_plot()
+    # bar_plot()
+    # box_plot()
+    # violin_plot()
+    # pair_plot()
+    # color_pair_plot()
+    # pair_grid_plot()
+    # violin_color_plot()
+    # color_lmplot()
+    # color_lmplot_2()
+    # color_lmplot_markers()
+    # anscombe_plot()
+    # facet_grid_plot()
+    # facet_grid_plot_v2()
+    # lmplot_v3()
+
+    # facet_grid_plot_v3()
+    facet_plot()
