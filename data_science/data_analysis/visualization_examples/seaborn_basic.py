@@ -180,6 +180,10 @@ def sns_scatter_plot():
         fit_reg=True,  # if ser fit_reg=False 拟合回归线将不显示
         label='True Data'
     )
+    joint = sns.jointplot(x='total_bill', y='tip', data=tips)
+    joint.set_axis_labels(xlabel='Total Bill', ylabel='Tip')
+
+    joint.fig.suptitle('Joint Plot of Total Bill and Tip', fontsize=10, y=1.03)
 
     lr = LinearRegression()
     predicted = lr.fit(X=tips['total_bill'].values.reshape(-1, 1),
