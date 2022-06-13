@@ -55,6 +55,36 @@ def pd_basic_show_info():
     # dtypes: float64(2), int64(2), object(4)
     # memory usage: 15.4+ KB
     # None
+    tip_df = df['tip']
+    print(tip_df.head())
+    # 0    1.01
+    # 1    1.66
+    # 2    3.50
+    # 3    3.31
+    # 4    3.61
+    # Name: tip, dtype: float64
+    print('tail\n', tip_df.tail())
+    # tail
+    # 239    5.92
+    # 240    2.00
+    # 241    2.00
+    # 242    1.75
+    # 243    3.00
+    # Name: tip, dtype: float64
+    subset = df[['total_bill', 'tip', 'sex']]
+    print('subset\n', subset.head())
+    # subset
+    #   total_bill   tip     sex
+    # 0       16.99  1.01  Female
+    # 1       10.34  1.66    Male
+    # 2       21.01  3.50    Male
+    # 3       23.68  3.31    Male
+    # 4       24.59  3.61  Female
+    print('tail of subset \n', subset.tail(2))
+    # tail of subset
+    #       total_bill   tip     sex
+    # 242       17.82  1.75    Male
+    # 243       18.78  3.00  Female
 
 
 if __name__ == '__main__':
