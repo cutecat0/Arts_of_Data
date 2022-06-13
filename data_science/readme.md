@@ -30,3 +30,5 @@ knowledge is fundamental, data scientists don’t need to be experts in every re
  Data science jobs have different areas of focus: putting the right, cleaned data in
 front of stakeholders (analytics); putting machine learning models into production (machine learning); and using data to make a decision (decision science).
 <br>
+<img width="1197" alt="截屏2022-06-13 15 01 37" src="https://user-images.githubusercontent.com/37787934/173297717-7b55f852-6eb6-4e71-968d-da4562002c88.png">
+
