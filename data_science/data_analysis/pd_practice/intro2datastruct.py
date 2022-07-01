@@ -224,6 +224,55 @@ def df_from_structured_or_record_array():
     1  3  4.0  b'Duck'
     """
 
+    # from list of dicts
+
+    data2 = [{"a": 1, "b": 2}, {"a": 6, "b": 8, "c": 10}]
+    df = pd.DataFrame(data2)
+    print(df)
+    """
+       a  b     c
+    0  1  2   NaN
+    1  6  8  10.0
+    """
+
+    df2 = pd.DataFrame(data2, index=["row1", "row2"])
+    print(df2)
+    """
+          a  b     c
+    row1  1  2   NaN
+    row2  6  8  10.0
+    """
+
+    df3 = pd.DataFrame(data2, columns=["a", "b"])
+    print(df3)
+    """
+       a  b
+    0  1  2
+    1  6  8
+    """
+
+    # from dict of tuples
+    data3 = {
+        ("a", "b"): {("A", "B"): 1, ("B", "C"): 2},
+        ("a", "a"): {("A", "A"): 6, ("B", "B"): 12},
+        ("a", "c"): {("A", "C"): 24, ("B", "A"): 48},
+        ("b", "c"): {("A", "C"): 32, ("A", "C"): 96}
+    }
+
+    df = pd.DataFrame(data3)
+    print(df)
+    # Why ??? What happened ???
+    """
+           a                 b
+           b     a     c     c
+    A B  1.0   NaN   NaN   NaN
+    B C  2.0   NaN   NaN   NaN
+    A A  NaN   6.0   NaN   NaN
+    B B  NaN  12.0   NaN   NaN
+    A C  NaN   NaN  24.0  96.0
+    B A  NaN   NaN  48.0   NaN
+    """
+
 
 if __name__ == '__main__':
     # series_from_ndarray()
