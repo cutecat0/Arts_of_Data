@@ -151,11 +151,28 @@ def series_from_scalar_value():
 def dataframe_from_dicts():
     """
     A DataFrame is 2D(Dimensional) labeled Sstruct Data Type
+    Index(row), 行
+    Columns(columns) 列
+    """
+    pet = {
+        "cat": pd.Series([1.0, 2.0, 3.0], index=["food", "weight", "cute"]),
+        "duck": pd.Series([1.0, 2.0, 3.0, 4.0], index=["food", "weight", "cute", "water"])
+    }
+
+    df = pd.DataFrame(pet)
+
+    print(df)
+    """
+            cat  duck
+    cute    3.0   3.0
+    food    1.0   1.0
+    water   NaN   4.0
+    weight  2.0   2.0
     """
 
 
 if __name__ == '__main__':
-    series_from_ndarray()
+    # series_from_ndarray()
     """
     s[0]
     Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52) 
@@ -224,3 +241,4 @@ if __name__ == '__main__':
     """
     # series_from_dict()
     # series_from_scalar_value()
+    dataframe_from_dicts()
