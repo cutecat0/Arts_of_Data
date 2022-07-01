@@ -38,8 +38,16 @@ def series_from_dict():
     dtype: int64
     """
     """ If an index is passed, the values in the dict will be instead of by passed index """
-    s2 = pd.Series(dic, index=["c", "d", "r", "o"])
+    s2 = pd.Series(dic, index=["cat", "Duck", "r", "o"])
     print(s2)
+    """
+    cat     100.0
+    Duck     98.0
+    r         NaN
+    o         NaN
+    dtype: float64
+    """
+    # NaN(Not a Number) is the standard missing data marker used in pandas
 
 
 if __name__ == '__main__':
