@@ -208,7 +208,21 @@ def df_from_dict_of_ndarry_or_list():
     name    4.0   1.0
     """
 
-    brk = 1
+
+def df_from_structured_or_record_array():
+    data = np.zeros((2,), dtype=[("A", "i4"), ("B", "f4"), ("C", "a10")])
+    data[:] = [(1, 2, "Cat"), (3, 4, "Duck")]
+    print(data)
+    " [(1, 2., b'Cat') (3, 4., b'Duck')]  "  # ???
+
+    df = pd.DataFrame(data)
+    print(df)
+    # ??? Why why why why ???
+    """
+       A    B        C
+    0  1  2.0   b'Cat'
+    1  3  4.0  b'Duck'
+    """
 
 
 if __name__ == '__main__':
@@ -282,4 +296,5 @@ if __name__ == '__main__':
     # series_from_dict()
     # series_from_scalar_value()
     # dataframe_from_dicts_of_series()
-    df_from_dict_of_ndarry_or_list()
+    # df_from_dict_of_ndarry_or_list()
+    df_from_structured_or_record_array()
