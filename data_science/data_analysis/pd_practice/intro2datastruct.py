@@ -43,6 +43,41 @@ def series_from_ndarray():
     # Out[3]: 1.169925222834734
     s.get("f", np.nan)
     # Out[4]: nan
+    """
+    s + s
+    Out[2]:
+    a   -1.569224
+    b    0.829274
+    c   -0.464486
+    d   -3.408521
+    e   -3.003048
+    dtype: float64
+    s * 2
+    Out[3]:
+    a   -1.569224
+    b    0.829274
+    c   -0.464486
+    d   -3.408521
+    e   -3.003048
+    dtype: float64
+    np.exp2(s)
+    Out[4]:
+    a    0.580508
+    b    1.332963
+    c    0.851310
+    d    0.306878
+    e    0.353180
+    dtype: float64
+    
+    s[1:] + s[:-1]
+    Out[5]: 
+    a         NaN
+    b    0.829274
+    c   -0.464486
+    d   -3.408521
+    e         NaN
+    dtype: float64
+    """
 
 
 def series_from_dict():
