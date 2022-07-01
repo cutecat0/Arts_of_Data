@@ -148,7 +148,7 @@ def series_from_scalar_value():
     """
 
 
-def dataframe_from_dicts():
+def dataframe_from_dicts_of_series():
     """
     A DataFrame is 2D(Dimensional) labeled Sstruct Data Type
     Index(row), 行
@@ -169,6 +169,46 @@ def dataframe_from_dicts():
     water   NaN   4.0
     weight  2.0   2.0
     """
+
+    # df.columns
+    # Out[3]: Index(['cat', 'duck'], dtype='object')
+    # df.index
+    # Out[4]: Index(['cute', 'food', 'water', 'weight'], dtype='object')
+
+
+def df_from_dict_of_ndarry_or_list():
+    """
+    The ndarray must be the same length. If the index is passed, it must be cleary and also the same length as the array.
+    """
+
+    pets = {
+        "cat": [1.0, 2.0, 3.0, 4.0],
+        "duck": [4.0, 4.0, 2.0, 1.0]
+    }
+
+    df = pd.DataFrame(pets)
+
+    print(df)
+    """
+       cat  duck
+    0  1.0   4.0
+    1  2.0   4.0
+    2  3.0   2.0
+    3  4.0   1.0
+    """
+
+    df = pd.DataFrame(pets, index=["weight", "food", "water", "name"])
+    # index here is the name of rows.
+    print(df)
+    """
+            cat  duck
+    weight  1.0   4.0
+    food    2.0   4.0
+    water   3.0   2.0
+    name    4.0   1.0
+    """
+
+    brk = 1
 
 
 if __name__ == '__main__':
@@ -241,4 +281,5 @@ if __name__ == '__main__':
     """
     # series_from_dict()
     # series_from_scalar_value()
-    dataframe_from_dicts()
+    # dataframe_from_dicts_of_series()
+    df_from_dict_of_ndarry_or_list()
