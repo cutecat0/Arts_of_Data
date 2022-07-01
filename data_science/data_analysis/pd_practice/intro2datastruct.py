@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 
+from collections import namedtuple
+
+
 """
     Reference: https://pandas.pydata.org/docs/user_guide/dsintro.html
 """
@@ -271,6 +274,29 @@ def df_from_structured_or_record_array():
     B B  NaN  12.0   NaN   NaN
     A C  NaN   NaN  24.0  96.0
     B A  NaN   NaN  48.0   NaN
+    """
+
+    # from namedtuple
+    Point = namedtuple("Point", "x y")
+    print(Point)
+    # <class '__main__.Point'>
+    df = pd.DataFrame([Point(0, 0), Point(0, 3), (2, 3)])
+    print(df)
+    """
+       x  y
+    0  0  0
+    1  0  3
+    2  2  3
+    """
+
+    Point3D = namedtuple("Point3D", "x y z")
+    df = pd.DataFrame([Point3D(0, 0, 0), Point3D(1, 3, 5), Point(6, 88)], index=["row1", "row2", "row3"])
+    print(df)
+    """
+          x   y    z
+    row1  0   0  0.0
+    row2  1   3  5.0
+    row3  6  88  NaN
     """
 
 
