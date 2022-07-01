@@ -50,7 +50,25 @@ def series_from_dict():
     # NaN(Not a Number) is the standard missing data marker used in pandas
 
 
+def series_from_scalar_value():
+    """
+    If the data is a scalar value, the index must be provided, the value will be repeated to match the length of index
+    """
+    s = pd.Series(6.6, index=["a", "b", "c", "d", "e", "f"])
+    print(s)
+    """
+    a    6.6
+    b    6.6
+    c    6.6
+    d    6.6
+    e    6.6
+    f    6.6
+    dtype: float64
+    """
+
+
 if __name__ == '__main__':
 
     # series_from_ndarray()
-    series_from_dict()
+    # series_from_dict()
+    series_from_scalar_value()
