@@ -79,6 +79,30 @@ def series_from_ndarray():
     dtype: float64
     """
 
+    s2 = pd.Series(np.random.randn(5), name="magic")
+    print(s2)
+    """
+    0    0.409252
+    1    0.338865
+    2    0.818272
+    3   -0.247809
+    4    0.589885
+    Name: magic, dtype: float64
+    """
+    s3 = s2.rename("MagicData")
+    print(s3, '\n', s3.name)
+    """
+    0   -2.005633
+    1   -1.640921
+    2   -0.041737
+    3   -1.053985
+    4    0.388305
+    Name: MagicData, dtype: float64 
+     MagicData
+    """
+
+    brk = 1
+
 
 def series_from_dict():
     """
@@ -121,6 +145,12 @@ def series_from_scalar_value():
     e    6.6
     f    6.6
     dtype: float64
+    """
+
+
+def dataframe_from_dicts():
+    """
+    A DataFrame is 2D(Dimensional) labeled Sstruct Data Type
     """
 
 
