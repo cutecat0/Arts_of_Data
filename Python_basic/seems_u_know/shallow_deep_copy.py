@@ -2,10 +2,18 @@ import copy
 
 """
     Reference: https://medium.com/geekculture/if-you-ask-these-4-python-questions-you-might-still-be-a-nooby-7e4c503aa1c3
+    
+    Q1: Copying an object is as simple as using "=", right?
+    A1: "=" is just a shallow copy of the object, when the original object changes, the copy one also change at the same time.
+    Using package copy and copy.deepcopy can solve this. 
 """
 
 
 def shallow_copy():
+    """
+        Here the = operator just returns to a shallow copy of an object
+        when the original object change, the copy one also change.
+    """
     numbers = [1, 2, 3]
     numbers_copied = numbers
 
