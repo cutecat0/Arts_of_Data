@@ -25,6 +25,11 @@ def shallow_copy():
 
 
 def deep_copy():
+    """
+        If u want to copy an object to another and keep it unique from the original object,
+        u shold use deep copy not just the "=" operator which is just a shallow copy
+        deep copy can use "import copy then use copy.deepcopy(obj1) to solve.
+    """
     numbers = [1, 2, 3]
     numbers_copied = copy.deepcopy(numbers)
 
