@@ -2,11 +2,16 @@
     Reference: https://medium.com/geekculture/if-you-ask-these-4-python-questions-you-might-still-be-a-nooby-7e4c503aa1c3
 
     Q3: What's the difference between a module, package, library and framework in Python?
-    A3: 1. module is a x.pt which contains different functions so on, use import x to call a module.
+    A3: 1. Module is a x.pt which contains different functions so on, use import x to call a module.
             some well-known modules are os, re and datetime.
         2. when developing large applications, the number of modules will increase, we group modules into a package.
             A package is a collection of modules that contain a __init__.py file.
             some well-known packages are pandas, numpy.
+        3. Library is usually a collection of packages.
+            some well-known libraries are requests, matplotlib, beautifulsoup
+            (pandas are also usually known as library)
+        4. Framework is a little bit like library, but frameworks contain a basic workflow and architecture of an application.
+            some well-known frameworks are Django or Flask.
 
 """
 import cat  # way 1 import all module from cat.py
