@@ -3,11 +3,17 @@
 
     Q3: What's the difference between a module, package, library and framework in Python?
     A3: 1. module is a x.pt which contains different functions so on, use import x to call a module.
+            some well-known modules are os, re and datetime.
+        2. when developing large applications, the number of modules will increase, we group modules into a package.
+            A package is a collection of modules that contain a __init__.py file.
+            some well-known packages are pandas, numpy.
 
 """
 import cat  # way 1 import all module from cat.py
 
 from cat import cute_cat  # way 2 just import one function from module cat
+import os
+import pandas
 
 
 def module_eg():
@@ -28,6 +34,10 @@ def module_eg():
     name_2 = 'Tom'
     cute_cat(name_2)
     # This cute cat's name is Tom
+
+    """
+        2. Package: to use a package, use import package.subpackage.module1, or from package.subpackage import module1
+    """
 
 
 if __name__ == '__main__':
