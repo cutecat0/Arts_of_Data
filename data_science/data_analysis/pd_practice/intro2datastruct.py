@@ -300,6 +300,27 @@ def df_from_structured_or_record_array():
     """
 
 
+def df_from_dict():
+    df = pd.DataFrame.from_dict(dict([('cat', ['1', '11', '111']), ('duck', ['2', '22', '222'])]))
+    print(df)
+    """
+       cat duck
+    0    1    2
+    1   11   22
+    2  111  222
+    """
+    df2 = pd.DataFrame.from_dict(
+        dict([('cat', ['1', '11', '111']), ('duck', ['2', '22', '222'])]),
+        orient='index',
+        columns=['col1', 'col2', 'col3'])
+    print(df2)
+    """
+         col1 col2 col3
+    cat     1   11  111
+    duck    2   22  222
+    """
+
+
 if __name__ == '__main__':
     # series_from_ndarray()
     """
@@ -372,4 +393,5 @@ if __name__ == '__main__':
     # series_from_scalar_value()
     # dataframe_from_dicts_of_series()
     # df_from_dict_of_ndarry_or_list()
-    df_from_structured_or_record_array()
+    # df_from_structured_or_record_array()
+    df_from_dict()
