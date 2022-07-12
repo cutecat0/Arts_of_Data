@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 from collections import namedtuple
 
@@ -301,7 +302,7 @@ def df_from_structured_or_record_array():
 
 
 def df_from_dict():
-    df = pd.DataFrame.from_dict(dict([('cat', ['1', '11', '111']), ('duck', ['2', '22', '222'])]))
+    df = pd.DataFrame.from_dict(dict([('cat', [1, 11, 111]), ('duck', [2, 22, 222])]))
     print(df)
     """
        cat duck
@@ -310,7 +311,7 @@ def df_from_dict():
     2  111  222
     """
     df2 = pd.DataFrame.from_dict(
-        dict([('cat', ['1', '11', '111']), ('duck', ['2', '22', '222'])]),
+        dict([('cat', [1, 11, 111]), ('duck', [2, 22, 222])]),
         orient='index',
         columns=['col1', 'col2', 'col3'])
     print(df2)
@@ -319,6 +320,114 @@ def df_from_dict():
     cat     1   11  111
     duck    2   22  222
     """
+
+    """
+    data
+    Out[67]: 
+    array([(1, 2., b'Hello'), (2, 3., b'World')],
+          dtype=[('A', '<i4'), ('B', '<f4'), ('C', 'S10')])
+    
+    pd.DataFrame.from_records(data, index="C")
+    Out[68]: 
+              A    B
+    C               
+    b'Hello'  1  2.0
+    b'World'  2  3.0
+    """
+    df['cute'] = df['cat'] * df['duck']
+    df['flag'] = df['cute'] > 10
+    print(df)
+    """
+       cat  duck   cute   flag
+    0    1     2      2  False
+    1   11    22    242   True
+    2  111   222  24642   True
+    """
+
+    del df['duck']
+    cute = df.pop('cute')
+    print(df, '\n', cute)
+    """
+       cat   flag
+    0    1  False
+    1   11   True
+    2  111   True 
+    
+    0        2
+    1      242
+    2    24642
+    Name: cute, dtype: int64
+    """
+
+    df['dog'] = 'wow'
+    print(df)
+    """
+       cat   flag  dog
+    0    1  False  wow
+    1   11   True  wow
+    2  111   True  wow
+    """
+
+    df['smart'] = df['cat'][:2]
+    print(df)
+    """
+       cat   flag  dog  smart
+    0    1  False  wow    1.0
+    1   11   True  wow   11.0
+    2  111   True  wow    NaN
+    """
+
+    df.insert(1, 'cute', df['cat'])
+    print(df)
+    """
+       cat  cute   flag  dog  smart
+    0    1     1  False  wow    1.0
+    1   11    11   True  wow   11.0
+    2  111   111   True  wow    NaN
+    """
+
+
+def assigning_df():
+    iris = pd.read_csv('data/iris.csv')
+    print(iris.head())
+    """
+       sepal_length  sepal_width  petal_length  petal_width species
+    0           5.1          3.5           1.4          0.2  setosa
+    1           4.9          3.0           1.4          0.2  setosa
+    2           4.7          3.2           1.3          0.2  setosa
+    3           4.6          3.1           1.5          0.2  setosa
+    4           5.0          3.6           1.4          0.2  setosa
+    """
+    print(iris.assign(sepal_ratio=iris['sepal_width'] / iris['sepal_length']).head())
+    """
+       sepal_length  sepal_width  petal_length  petal_width species  sepal_ratio
+    0           5.1          3.5           1.4          0.2  setosa     0.686275
+    1           4.9          3.0           1.4          0.2  setosa     0.612245
+    2           4.7          3.2           1.3          0.2  setosa     0.680851
+    3           4.6          3.1           1.5          0.2  setosa     0.673913
+    4           5.0          3.6           1.4          0.2  setosa     0.720000
+    """
+    print(iris.assign(sepal_ratio=lambda x: (x['sepal_width'] / x['sepal_length'])).head())
+    """
+       sepal_length  sepal_width  petal_length  petal_width species  sepal_ratio
+    0           5.1          3.5           1.4          0.2  setosa     0.686275
+    1           4.9          3.0           1.4          0.2  setosa     0.612245
+    2           4.7          3.2           1.3          0.2  setosa     0.680851
+    3           4.6          3.1           1.5          0.2  setosa     0.673913
+    4           5.0          3.6           1.4          0.2  setosa     0.720000
+    """
+
+    fig, ax = plt.subplots()
+    (
+        iris.query('sepal_length > 5')
+        .assign(
+            sepal_ratio=lambda x: x.sepal_width / x.sepal_length,
+            petal_ratio=lambda x: x.petal_width / x.petal_length,
+        )
+        .plot(kind='scatter', x='sepal_ratio', y='petal_ratio')
+    )
+    plt.grid()
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -394,4 +503,5 @@ if __name__ == '__main__':
     # dataframe_from_dicts_of_series()
     # df_from_dict_of_ndarry_or_list()
     # df_from_structured_or_record_array()
-    df_from_dict()
+    # df_from_dict()
+    assigning_df()
