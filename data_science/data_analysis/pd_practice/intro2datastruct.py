@@ -429,6 +429,66 @@ def assigning_df():
     plt.grid()
     plt.show()
 
+    dfa = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]}, index=['row_a', 'row_b', 'row+c'])
+    """
+           A  B
+    row_a  1  4
+    row_b  2  5
+    row+c  3  6
+    """
+    print(dfa.assign(C=lambda x: x['A'] + x['B'], D=lambda x: x['A'] + x['C']))
+    """
+       A  B  C   D
+    0  1  4  5   6
+    1  2  5  7   9
+    2  3  6  9  12
+    """
+
+    # get column use df[col]
+    """
+    dfa['A']
+    Out[4]:
+    row_a    1
+    row_b    2
+    row+c    3
+    Name: A, dtype: int64
+    """
+
+    # get row use df.loc[row]
+    """
+    dfa.loc['row_a']
+    Out[5]: 
+    A    1
+    B    4
+    Name: row_a, dtype: int64
+    """
+
+    # get row through index loc
+    """
+    dfa.iloc[1]
+    Out[7]: 
+    A    2
+    B    5
+    Name: row_b, dtype: int64
+    dfa.iloc[0]
+    Out[8]: 
+    A    1
+    B    4
+    Name: row_a, dtype: int64
+    """
+
+    # col slice use df[1:5]
+    """
+    dfa[2:3]
+    Out[10]: 
+           A  B
+    row+c  3  6
+    dfa[1:2]
+    Out[11]: 
+           A  B
+    row_b  2  5
+    """
+
 
 if __name__ == '__main__':
     # series_from_ndarray()
