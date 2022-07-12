@@ -583,6 +583,50 @@ def df_alignment_arithmetic():
     """
 
 
+def bool_df():
+    df1 = pd.DataFrame({'a': [1, 0, 1], 'b': [0, 1, 1]}, dtype=bool)
+    df2 = pd.DataFrame({'a': [0, 1, 1], 'b': [1, 1, 0]}, dtype=bool)
+    print(df1, '\n', df2)
+    """
+           a      b
+    0   True  False
+    1  False   True
+    2   True   True 
+            a      b
+    0  False   True
+    1   True   True
+    2   True  False
+    """
+    print(df1 & df2)
+    """
+           a      b
+    0  False  False
+    1  False   True
+    2   True  False
+    """
+    print(df1 | df2)
+    """
+          a     b
+    0  True  True
+    1  True  True
+    2  True  True
+    """
+    print(df1 ^ df2)
+    """
+           a      b
+    0   True   True
+    1   True  False
+    2  False   True
+    """
+    print(~df1)
+    """
+           a      b
+    0  False   True
+    1   True  False
+    2  False  False
+    """
+
+
 if __name__ == '__main__':
     # series_from_ndarray()
     """
@@ -658,4 +702,5 @@ if __name__ == '__main__':
     # df_from_structured_or_record_array()
     # df_from_dict()
     # assigning_df()
-    df_alignment_arithmetic()
+    # df_alignment_arithmetic()
+    bool_df()
