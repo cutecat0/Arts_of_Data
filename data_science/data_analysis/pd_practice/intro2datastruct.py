@@ -701,6 +701,42 @@ def transposing_df():
     """
 
 
+def series_df():
+    ser1 = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
+    ser2 = pd.Series([1, 3, 5], index=['b', 'a', 'c'])
+    print(ser1)
+    """
+    a    1
+    b    2
+    c    3
+    dtype: int64
+    """
+    print(ser2)
+    """
+    b    1
+    a    3
+    c    5
+    dtype: int64
+    """
+    print(np.remainder(ser1, ser2))
+    # ??? Why the result is the follow ???  mod
+    # solved, ser2 order at first auto then ser1.a mod ser2.a then remainder is 1 mod 3 = 0 remainder 1
+    """
+    a    1
+    b    0
+    c    3
+    dtype: int64
+    """
+    ser3 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+    ser4 = pd.Series([1, 2, 3, 4], index=['b', 'c', 'd', 'a'])
+    print('-----ser3-----')
+    print(ser3)
+    print('-----ser4-----')
+    print(ser4)
+    print('-----remainder-----')
+    print(np.remainder(ser3, ser4))
+
+
 if __name__ == '__main__':
     # series_from_ndarray()
     """
@@ -778,4 +814,5 @@ if __name__ == '__main__':
     # assigning_df()
     # df_alignment_arithmetic()
     # bool_df()
-    transposing_df()
+    # transposing_df()
+    series_df()
