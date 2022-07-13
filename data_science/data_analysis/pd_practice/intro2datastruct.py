@@ -4,6 +4,12 @@ import matplotlib.pyplot as plt
 
 from collections import namedtuple
 
+# pd.set_option("display.width", 666)  # default is 80
+# pd.set_option("display.max_colwidth", 888)
+
+pd.options.display.max_columns = None
+pd.set_option('display.width', 1000)
+
 
 """
     Reference: https://pandas.pydata.org/docs/user_guide/dsintro.html
@@ -736,6 +742,53 @@ def series_df():
     print('-----remainder-----')
     print(np.remainder(ser3, ser4))
 
+    ser5 = pd.Series([2, 4, 6], index=['b', 'c', 'd'])
+    print(ser5)
+    print(np.remainder(ser1, ser5))
+    """
+    a    NaN
+    b    0.0
+    c    3.0
+    d    NaN
+    dtype: float64
+    """
+
+
+def console_df():
+    df = pd.read_csv('data/iris.csv')
+    print(df.head())
+    """
+       sepal_length  sepal_width  petal_length  petal_width species
+    0           5.1          3.5           1.4          0.2  setosa
+    1           4.9          3.0           1.4          0.2  setosa
+    2           4.7          3.2           1.3          0.2  setosa
+    3           4.6          3.1           1.5          0.2  setosa
+    4           5.0          3.6           1.4          0.2  setosa
+    """
+    print(df.info())
+    """
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 150 entries, 0 to 149
+    Data columns (total 5 columns):
+     #   Column        Non-Null Count  Dtype  
+    ---  ------        --------------  -----  
+     0   sepal_length  150 non-null    float64
+     1   sepal_width   150 non-null    float64
+     2   petal_length  150 non-null    float64
+     3   petal_width   150 non-null    float64
+     4   species       150 non-null    object 
+    dtypes: float64(4), object(1)
+    memory usage: 6.0+ KB
+    None
+    """
+    print(df.iloc[-3:, :12].to_string())
+    """
+         sepal_length  sepal_width  petal_length  petal_width    species
+    147           6.5          3.0           5.2          2.0  virginica
+    148           6.2          3.4           5.4          2.3  virginica
+    149           5.9          3.0           5.1          1.8  virginica
+    """
+
 
 if __name__ == '__main__':
     # series_from_ndarray()
@@ -815,4 +868,5 @@ if __name__ == '__main__':
     # df_alignment_arithmetic()
     # bool_df()
     # transposing_df()
-    series_df()
+    # series_df()
+    console_df()
