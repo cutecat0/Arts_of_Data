@@ -54,5 +54,69 @@ def group_record_by_one_pointed_parameter():
     """
 
 
+def chatGPT_way():
+    # Sample data
+    records = [
+        {'name': 'Alice', 'age': 25, 'gender': 'Female'},
+        {'name': 'Bob', 'age': 30, 'gender': 'Male'},
+        {'name': 'Charlie', 'age': 35, 'gender': 'Male'},
+        {'name': 'David', 'age': 40, 'gender': 'Male'},
+        {'name': 'Emma', 'age': 45, 'gender': 'Female'},
+        {'name': 'Frank', 'age': 50, 'gender': 'Male'}
+    ]
+
+    # Group by gender
+    groups = {}
+    for record in records:
+        key = record['gender']
+        if key not in groups:
+            groups[key] = []
+        groups[key].append(record)
+
+    # Print the groups
+    for key, group in groups.items():
+        print(f"{key}: {group}")
+
+    # result:
+    """
+    Female: [{'name': 'Alice', 'age': 25, 'gender': 'Female'}, {'name': 'Emma', 'age': 45, 'gender': 'Female'}]
+    Male: [{'name': 'Bob', 'age': 30, 'gender': 'Male'}, {'name': 'Charlie', 'age': 35, 'gender': 'Male'}, {'name': 'David', 'age': 40, 'gender': 'Male'}, {'name': 'Frank', 'age': 50, 'gender': 'Male'}]
+    """
+
+
+def chatGPT_way2():
+    import itertools
+
+    # Sample data
+    records = [
+        {'name': 'Alice', 'age': 25, 'gender': 'Female'},
+        {'name': 'Bob', 'age': 30, 'gender': 'Male'},
+        {'name': 'Charlie', 'age': 35, 'gender': 'Male'},
+        {'name': 'David', 'age': 40, 'gender': 'Male'},
+        {'name': 'Emma', 'age': 45, 'gender': 'Female'},
+        {'name': 'Frank', 'age': 50, 'gender': 'Male'}
+    ]
+
+    # Sort by gender
+    records.sort(key=lambda x: x['gender'])
+
+    # Group by gender
+    groups = {}
+    for key, group in itertools.groupby(records, key=lambda x: x['gender']):
+        groups[key] = list(group)
+
+    # Print the groups
+    for key, group in groups.items():
+        print(f"{key}: {group}")
+
+    # result
+    """
+    Female: [{'name': 'Alice', 'age': 25, 'gender': 'Female'}, {'name': 'Emma', 'age': 45, 'gender': 'Female'}]
+    Male: [{'name': 'Bob', 'age': 30, 'gender': 'Male'}, {'name': 'Charlie', 'age': 35, 'gender': 'Male'}, {'name': 'David', 'age': 40, 'gender': 'Male'}, {'name': 'Frank', 'age': 50, 'gender': 'Male'}]
+    """
+
+
 if __name__ == '__main__':
     group_record_by_one_pointed_parameter()
+    chatGPT_way()
+    chatGPT_way2()
