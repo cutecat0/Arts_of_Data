@@ -57,6 +57,12 @@ def sort_not_compare():
     print(sorted(users, key=attrgetter('last_name_')))
     # [UserWithName(93, Cute, Cat), UserWithName(3, Simba, Celina), UserWithName(33, Jim, Gorden), UserWithName(23, Bruce, Win)]
 
+    # min() max() also can be used here
+    print(max(users, key=attrgetter('user_id_')))
+    # UserWithName(93, Cute, Cat)
+    print(min(users, key=attrgetter('first_name_')))
+    # UserWithName(23, Bruce, Win)
+
 
 if __name__ == '__main__':
     sort_not_compare()
