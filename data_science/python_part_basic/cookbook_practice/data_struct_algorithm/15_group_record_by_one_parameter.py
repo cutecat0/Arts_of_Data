@@ -30,6 +30,10 @@ def group_record_by_one_pointed_parameter():
 
     # sort by the desired field first
     rows.sort(key=itemgetter('date'))
+    """
+        ！！！ Remember to sort the record first, cause groupby() can only check the continues elements
+        when iterator each time, it returns a value and an iterator object
+    """
 
     # iterator in groups
     for date, item in groupby(rows, key=itemgetter('date')):
@@ -51,6 +55,11 @@ def group_record_by_one_pointed_parameter():
     07/04/2012
     {'address': '5148 N CLARK', 'date': '07/04/2012'}
     {'address': '1039 W GRANVILLE', 'date': '07/04/2012'}
+    """
+
+    """
+        If you just want to group the record to a bigger data structure through the date parameter, 
+        and allows random access, you'd better use defaultdict() to creat a multy-value dict which was in 06_dict_key_to_values.py 
     """
 
 
