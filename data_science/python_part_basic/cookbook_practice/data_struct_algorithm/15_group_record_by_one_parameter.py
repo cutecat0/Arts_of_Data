@@ -61,6 +61,16 @@ def group_record_by_one_pointed_parameter():
         If you just want to group the record to a bigger data structure through the date parameter, 
         and allows random access, you'd better use defaultdict() to creat a multy-value dict which was in 06_dict_key_to_values.py 
     """
+    # example
+    from collections import defaultdict
+    rows_by_date = defaultdict(list)
+    for row in rows:
+        rows_by_date[row['date']].append(row)
+
+    print('defaultdict way here')
+    for i in rows_by_date['07/01/2012']:
+        print(i)
+    print('end of defaultdict way')
 
 
 def chatGPT_way():
@@ -125,7 +135,25 @@ def chatGPT_way2():
     """
 
 
+def print_line():
+    import time
+    for i in range(100):
+        print('#', end='', flush=True)
+        time.sleep(0.01)
+
+    for i in range(5, 0, -1):
+        print('\r倒计时{}秒!'.format(i), end='', flush=True)
+        time.sleep(1)
+    print('\r倒计时结束!')
+
+    from tqdm import tqdm
+    for i in tqdm(range(10000)):
+        pass
+
+
 if __name__ == '__main__':
-    group_record_by_one_pointed_parameter()
-    chatGPT_way()
-    chatGPT_way2()
+    # group_record_by_one_pointed_parameter()
+    # chatGPT_way()
+    # chatGPT_way2()
+
+    print_line()
