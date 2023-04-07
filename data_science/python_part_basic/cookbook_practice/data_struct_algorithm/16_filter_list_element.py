@@ -33,9 +33,24 @@ def get_list_elements():
 
     # way 3
     data_list = [0, 1, 6, 8, -6, 'N/A', 'NULL', 's-1', 'None']
-    need_list = list(filter(rules, data_list))
+    need_list = list(filter(rules, data_list))  # here filter() function creates an iterator, so if you want to get a list, use list() to switch it
     print(need_list)
     # [0, 1, 6, 8, -6, '-1']
+
+    # switch data while filter data
+    data_list_2 = [1, 2, 5, 8, 4, -2, -9, -1, 7]
+    import math
+    print([math.sqrt(x) for x in data_list_2 if x > 0])
+    # [1.0, 1.4142135623730951, 2.23606797749979, 2.8284271247461903, 2.0, 2.6457513110645907]
+
+    # for the data that not switch with filter rules, you can't delete it, you use some other value to replace them
+    negative_data = [x if x > 0 else 0 for x in data_list_2]
+    print(negative_data)
+    # [1, 2, 5, 8, 4, 0, 0, 0, 7]
+
+    positive_data = [x if x < 0 else 0 for x in data_list_2]
+    print(positive_data)
+    # [0, 0, 0, 0, 0, -2, -9, -1, 0]
 
 
 def rules(val):
