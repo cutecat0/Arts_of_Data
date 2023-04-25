@@ -52,6 +52,8 @@ def get_list_elements():
     print(positive_data)
     # [0, 0, 0, 0, 0, -2, -9, -1, 0]
 
+    # attention !!! itertools.compress()
+
 
 def rules(val):
     try:
@@ -61,6 +63,32 @@ def rules(val):
         return False
 
 
+def filter_v3():
+    addresses = [
+        '5412 N CLARK',
+        '5148 N CLARK',
+        '5800 E 58TH',
+        '2122 N CLARK',
+        '5645 N RAVENSWOOD',
+        '1060 W ADDISON',
+        '4801 N BROADWAY',
+        '1039 W GRANVILLE',
+    ]
+    counts = [0, 3, 10, 4, 1, 7, 6, 1]
+
+    from itertools import compress
+
+    more5 = [n > 5 for n in counts]
+    print(more5)
+    #  [False, False, True, False, False, True, True, False]
+    result = list(compress(addresses, more5))
+    # ['5800 E 58TH', '1060 W ADDISON', '4801 N BROADWAY']
+
+    print(result)
+
+
 if __name__ == '__main__':
-    get_list_elements()
+    # get_list_elements()
+
+    filter_v3()
 
