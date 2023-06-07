@@ -130,10 +130,115 @@ jupyter notebook
     str.rfind
 
 
+## Navigation shortcuts¶
+    Keystroke	Action
+    Ctrl-a	Move cursor to the beginning of the line
+    Ctrl-e	Move cursor to the end of the line
+    Ctrl-b or the left arrow key	Move cursor back one character
+    Ctrl-f or the right arrow key	Move cursor forward one character
+
+
+## Text Entry Shortcuts
+    Keystroke	Action
+    Backspace key	Delete previous character in line
+    Ctrl-d	Delete next character in line
+    Ctrl-k	Cut text from cursor to end of line
+    Ctrl-u	Cut text from beginning of line to cursor
+    Ctrl-y	Yank (i.e. paste) text that was previously cut
+    Ctrl-t	Transpose (i.e., switch) previous two characters 
+
+## Command History Shortcuts
+    Keystroke	Action
+    Ctrl-p (or the up arrow key)	Access previous command in history
+    Ctrl-n (or the down arrow key)	Access next command in history
+    Ctrl-r	Reverse-search through command history
+
+## Miscellaneous Shortcuts
+    Ctrl-l	Clear terminal screen
+    Ctrl-c	Interrupt current Python command
+    Ctrl-d	Exit IPython session
+    The Ctrl-c in particular can be useful when you inadvertently start a very long-running job.
+
+
+# Ipython Magic Commands
+## Pasting Code Blocks: %paste and %cpaste
+    In [5]: %paste
+    def donothing(x):
+    ...:     return x
+    ## -- End pasted text --
+    
+    In [6]: donothing(10)
+    Out[6]: 10
+
+    In [8]: %cpaste
+    Pasting code; enter '--' alone on the line to stop or use Ctrl-D.
+    :In [1]: def donothing(x):
+    ...:     return x
+    ...:
+    
+    In [9]: donothing(100)
+    Out[9]: 100
+
+## Running External Code: %run
+    In [18]: %run myscript.py
+    1 square is 1
+    2 square is 4
+    3 square is 9
+
+## Timing Code Execution: %timeit
+    In [21]: %timeit L = [n ** 2 for n in range(1000)]
+    220 µs ± 1.03 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    
+    In [23]: %%timeit
+    ...: L = []
+    ...: for n in range(1000):
+    ...:     L.append(n ** 2)
+    ...: 
+    ...: 
+
+    257 µs ± 3.88 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+
+## Help on Magic Functions: ?, %magic, and %lsmagic
+    %timeit?
+    In [30]: %lsmagic
+    In [31]: %magic
+
+# Input and Output History
+## Ipython's IN and Out Objects
+    In [32]: import math
+
+    In [33]: math.sin(20)
+    Out[33]: 0.9129452507276277
+    
+    In [34]: math.cos(20)
+    Out[34]: 0.40808206181339196
+
+    In [35]: print(In)
+
+    In [36]: Out
+
+    In [43]: print(Out)
+    {6: 10, 9: 100, 27: <IPython.core.magics.basic.MagicsDisplay object at 0x7f9deac09310>, 30: <IPython.core.magics.basic.MagicsDisplay object at 0x7f9def5c7950>, 33: 0.9129452507276277, 34: 0.40808206181339196}
+
+    In result is  a list while Out reesult is a tuple dict
+
+    In [44]: print(In[1])
+    def donothing(x):
+    return x
+    
+    In [46]: print(Out[6])
+    10
+
+
+
+
+
+
+    
     
 
 
-
+    
 
 
 
