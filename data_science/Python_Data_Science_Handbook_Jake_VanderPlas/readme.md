@@ -688,3 +688,4 @@ https://www.packtpub.com/big-data-and-business-intelligence/learning-ipython-int
 
 `IPython Interactive Computing and Visualization Cookbook:` Also by Cyrille Rossant, this book is a longer and more advanced treatment of using IPython for data science. Despite its name, it's not just about IPython–it also goes into some depth on a broad range of data science topics.
 https://www.packtpub.com/big-data-and-business-intelligence/ipython-interactive-computing-and-visualization-cookbook
+
