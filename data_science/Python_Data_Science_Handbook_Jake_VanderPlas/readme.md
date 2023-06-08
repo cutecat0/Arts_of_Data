@@ -607,69 +607,84 @@ The Python Data Science Handbook by Jake VanderPlas (O’Reilly). Copyright 2016
     1    0.010    0.010    0.588    0.588 <string>:1(<module>)
     1    0.000    0.000    0.588    0.588 {built-in method builtins.exec}
     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-     
+  
+## Line-By-Line Profiling with `%lprun`   
+     pip3 install line_profiler
+    %load_ext line_profiler
+    In [170]: %load_ext line_profiler
 
-
-
-
-
-
-
-
-
-
-
-
+    In [171]: %lprun -f sum_of_list sum_of_list(5000)
+    Timer unit: 1e-09 s
     
-
-
+    Total time: 0.004855 s
+    File: <ipython-input-167-3554648dc078>
+    Function: sum_of_list at line 1
     
-
-    
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
+    Line #      Hits         Time  Per Hit   % Time  Line Contents
+    ==============================================================
+         1                                           def sum_of_list(N):
+         2         1       3000.0   3000.0      0.1      s = 0
+         3         5       5000.0   1000.0      0.1      for i in range(5):
+         4         5    4603000.0 920600.0     94.8          L = [j ^ (j >> i) for j in range(N)]
+         5         5     243000.0  48600.0      5.0          s += sum(L)
+         6         1       1000.0   1000.0      0.0      return s
     
 
     
+## Profiling Memory Use: `%memit` and `%mprun`
+    pip3 install memory_profiler
+    In [173]: %load_ext memory_profiler
+
+    In [174]: %memit sum_of_list(100000)
+    peak memory: 93.96 MiB, increment: 2.03 MiB
+    
+    In [175]: %%file mprun_demo.py
+     ...: def sum_of_lists(N):
+     ...:     total = 0
+     ...:     for i in range(5):
+     ...:         L = [j ^ (j >> i) for j in range(N)]
+     ...:         total += sum(L)
+     ...:         del L  # remove reference to L
+     ...:     return total
+     ...: 
+    Writing mprun_demo.py
 
 
+    In [176]: from mprun_demo import sum_of_lists
 
-
-
-
+    In [182]: %mprun -f sum_of_lists sum_of_lists(100)
+    Filename: /Users/gwendolynhai/github_projects/ArtsofData/data_science/Python_Data_Science_Handbook_Jake_VanderPlas/mprun_demo.py
+    
+    Line #    Mem usage    Increment  Occurrences   Line Contents
+    =============================================================
+         1     92.9 MiB     92.9 MiB           1   def sum_of_lists(N):
+         2     92.9 MiB      0.0 MiB           1       total = 0
+         3     92.9 MiB      0.0 MiB           6       for i in range(5):
+         4     92.9 MiB      0.0 MiB         515           L = [j ^ (j >> i) for j in range(N)]
+         5     92.9 MiB      0.0 MiB           5           total += sum(L)
+         6     92.9 MiB      0.0 MiB           5           del L  # remove reference to L
+         7     92.9 MiB      0.0 MiB           1       return total
     
     
+# More Ipython Resources
+## Web Resources
+`The IPython website:` The IPython website links to documentation, examples, tutorials, and a variety of other resources.
+http://ipython.org/
 
+`The nbviewer website:` This site shows static renderings of any IPython notebook available on the internet. The front page features some example notebooks that you can browse to see what other folks are using IPython for!
+http://nbviewer.jupyter.org/
 
-    
+`A gallery of interesting Jupyter Notebooks:` This ever-growing list of notebooks, powered by nbviewer, shows the depth and breadth of numerical analysis you can do with IPython. It includes everything from short examples and tutorials to full-blown courses and books composed in the notebook format!
+https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks/
 
+`Video Tutorials:` searching the Internet, you will find many video-recorded tutorials on IPython. I'd especially recommend seeking tutorials from the PyCon, SciPy, and PyData conferenes by Fernando Perez and Brian Granger, two of the primary creators and maintainers of IPython and Jupyter.
 
+## Books
+`Python for Data Analysis:` Wes McKinney's book includes a chapter that covers using IPython as a data scientist. Although much of the material overlaps what we've discussed here, another perspective is always helpful.
+http://shop.oreilly.com/product/0636920023784.do
 
+`Learning IPython for Interactive Computing and Data Visualization:` This short book by Cyrille Rossant offers a good introduction to using IPython for data analysis.
+https://www.packtpub.com/big-data-and-business-intelligence/learning-ipython-interactive-computing-and-data-visualization
 
-
-
-
-
-
-
-
+`IPython Interactive Computing and Visualization Cookbook:` Also by Cyrille Rossant, this book is a longer and more advanced treatment of using IPython for data science. Despite its name, it's not just about IPython–it also goes into some depth on a broad range of data science topics.
+https://www.packtpub.com/big-data-and-business-intelligence/ipython-interactive-computing-and-visualization-cookbook
